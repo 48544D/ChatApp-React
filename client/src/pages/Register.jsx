@@ -1,8 +1,15 @@
+import { useContext } from "react";
 import { Alert, Button, Form, Row, Col, Stack } from "react-bootstrap";
+import { AuthContext } from "../context/authContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
+  const { registerInfo, updateRegisterInfo, registerUser, isRegisterLoading } =
+    useContext(AuthContext);
+
   return (
-    <Form>
+    <Form onSubmit={registerUser}>
       <Row
         style={{
           height: "100vh",
@@ -13,16 +20,44 @@ const Register = () => {
         <Col xs={6}>
           <Stack gap={3}>
             <h2>Register</h2>
-            <Form.Control type="text" placeholder="Username" />
-            <Form.Control type="password" placeholder="Password" />
+
+            <Form.Control
+              type="text"
+              placeholder="Username"
+              onChange={(e) =>
+                updateRegisterInfo({
+                  ...registerInfo,
+                  username: e.target.value,
+                })
+              }
+            />
+            <Form.Control
+              type="password"
+              placeholder="Password"
+              onChange={(e) =>
+                updateRegisterInfo({
+                  ...registerInfo,
+                  password: e.target.value,
+                })
+              }
+            />
 
             <Button variant="primary" type="submit">
-              Register
+              {isRegisterLoading ? "Loading..." : "Register"}
             </Button>
 
-            <Alert variant="danger">
-              <p>An error has occured</p>
-            </Alert>
+            <ToastContainer
+              position="top-right"
+              autoClose={2500}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover={false}
+              theme="light"
+            />
           </Stack>
         </Col>
       </Row>

@@ -4,6 +4,7 @@ import verifyToken from "../middlewares/auth.js";
 
 const router = express.Router();
 
+// prefix /user
 router.get("/:userId", verifyToken, getUser);
 router.get("/", verifyToken, getUsers);
 

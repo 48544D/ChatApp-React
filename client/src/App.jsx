@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
-import NavBar from "./components/NavBar.jsx";
+import NavBar from "./components/navbar.jsx";
 
 function App() {
   return (

@@ -5,6 +5,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
+import chatRoutes from "./routes/chat.js";
 
 const app = express();
 dotenv.config();
@@ -18,6 +19,7 @@ const PORT = process.env.PORT || 3030;
 // routes
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
+app.use("/chat", chatRoutes);
 
 mongoose
   .connect(process.env.MONGO_URL, {

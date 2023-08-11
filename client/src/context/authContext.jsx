@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from "react";
+import { createContext, useCallback, useEffect, useState } from "react";
 import { baseUrl, postRequest } from "../utils/services";
 import { toast } from "react-toastify";
 
@@ -6,43 +6,82 @@ export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [isRegisterLoading, setIsRegisterLoading] = useState(false);
-  const [registerInfo, setRegisterInfo] = useState({
+  const [isLoading, setIsLoading] = useState(false);
+  const [token, setToken] = useState(null);
+  const [info, setInfo] = useState({
     username: "",
     password: "",
   });
-  const updateRegisterInfo = useCallback((info) => {
-    setRegisterInfo(info);
+  const updateInfo = useCallback((info) => {
+    setInfo(info);
+  }, []);
+
+  useEffect(() => {
+    const user = localStorage.getItem("user");
+    if (user) {
+      setUser(JSON.parse(user));
+    }
   }, []);
 
   const registerUser = useCallback(
     async (e) => {
       e.preventDefault();
-      setIsRegisterLoading(true);
+      setIsLoading(true);
       const response = await postRequest(
         `${baseUrl}/auth/register`,
-        new URLSearchParams(Object.entries(registerInfo)).toString()
+        new URLSearchParams(Object.entries(info)).toString()
       );
-      setIsRegisterLoading(false);
+      setIsLoading(false);
 
-      if (response.isError) {
-        return toast.error(response.error);
-      }
+      if (response.isError) return toast.error(response.error);
 
-      localStorage.setItem("user", JSON.stringify(response));
-      setUser(response);
+      toast.success("Registered successfully");
+
+      setTimeout(() => {
+        window.location.href = "/login";
+      }, 1500);
     },
-    [registerInfo]
+    [info]
   );
+
+  const loginUser = useCallback(async (e) => {
+    e.preventDefault();
+    console.log(info);
+    setIsLoading(true);
+    const response = await postRequest(
+      `${baseUrl}/auth/login`,
+      new URLSearchParams(Object.entries(info)).toString()
+    );
+    setIsLoading(false);
+
+    if (response.isError) return toast.error(response.error);
+
+    toast.success("Logged in successfully");
+
+    setTimeout(() => {
+      localStorage.setItem("user", JSON.stringify(response.user));
+      localStorage.setItem("token", response.token);
+      setUser(response.user);
+      setToken(response.token);
+    }, 1500);
+  });
+
+  const logoutUser = useCallback(() => {
+    localStorage.removeItem("user");
+    setUser(null);
+  });
 
   return (
     <AuthContext.Provider
       value={{
         user,
-        registerInfo,
-        updateRegisterInfo,
+        info,
+        updateInfo,
         registerUser,
-        isRegisterLoading,
+        isLoading,
+        loginUser,
+        logoutUser,
+        token,
       }}
     >
       {children}

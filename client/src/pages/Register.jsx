@@ -1,12 +1,11 @@
 import { useContext } from "react";
-import { Alert, Button, Form, Row, Col, Stack } from "react-bootstrap";
+import { Button, Form, Row, Col, Stack } from "react-bootstrap";
 import { AuthContext } from "../context/authContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const Register = () => {
-  const { registerInfo, updateRegisterInfo, registerUser, isRegisterLoading } =
-    useContext(AuthContext);
+  const { info, updateInfo, registerUser, isLoading } = useContext(AuthContext);
 
   return (
     <Form onSubmit={registerUser}>
@@ -25,8 +24,8 @@ const Register = () => {
               type="text"
               placeholder="Username"
               onChange={(e) =>
-                updateRegisterInfo({
-                  ...registerInfo,
+                updateInfo({
+                  ...info,
                   username: e.target.value,
                 })
               }
@@ -35,15 +34,15 @@ const Register = () => {
               type="password"
               placeholder="Password"
               onChange={(e) =>
-                updateRegisterInfo({
-                  ...registerInfo,
+                updateInfo({
+                  ...info,
                   password: e.target.value,
                 })
               }
             />
 
             <Button variant="primary" type="submit">
-              {isRegisterLoading ? "Loading..." : "Register"}
+              {isLoading ? "Loading..." : "Register"}
             </Button>
 
             <ToastContainer

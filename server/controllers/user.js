@@ -2,8 +2,11 @@ import User from "../models/user.js";
 
 export const getUser = async (req, res) => {
   try {
-    const user = await User.findById(req.params.userId);
+    let user = await User.findById(req.params.userId);
     if (!user) throw new Error("User does not exist");
+    // removing password from user object
+    user = user.toObject();
+    delete user.password;
     res.status(200).json(user);
   } catch (error) {
     if (error.message === "User does not exist")
@@ -16,6 +19,11 @@ export const getUsers = async (req, res) => {
   try {
     const users = await User.find();
     if (!users) throw new Error("No users found");
+    // removing password from user object
+    users.forEach((user) => {
+      user = user.toObject();
+      delete user.password;
+    });
     res.status(200).json(users);
   } catch (error) {
     if (error.message === "No users found")

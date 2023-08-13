@@ -44,19 +44,6 @@ const Register = () => {
             <Button variant="primary" type="submit">
               {isLoading ? "Loading..." : "Register"}
             </Button>
-
-            <ToastContainer
-              position="top-right"
-              autoClose={2500}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover={false}
-              theme="light"
-            />
           </Stack>
         </Col>
       </Row>

@@ -37,19 +37,6 @@ const Login = () => {
             <Button variant="primary" type="submit">
               {isLoading ? "Loading..." : "Login"}
             </Button>
-
-            <ToastContainer
-              position="top-right"
-              autoClose={2500}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover={false}
-              theme="light"
-            />
           </Stack>
         </Col>
       </Row>

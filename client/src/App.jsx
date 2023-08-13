@@ -5,13 +5,14 @@ import Register from "./pages/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container } from "react-bootstrap";
 import NavBar from "./components/navbar.jsx";
-import { useContext } from "react";
-import { AuthContext } from "./context/authContext";
+import { ChatContextProvider } from "./context/chatContext";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-  const { user } = useContext(AuthContext);
+  const user = JSON.parse(localStorage.getItem("user"));
   return (
-    <>
+    <ChatContextProvider>
       <NavBar />
       <Container>
         <Routes>
@@ -29,8 +30,20 @@ function App() {
           />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={2500}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover={false}
+          theme="light"
+        />
       </Container>
-    </>
+    </ChatContextProvider>
   );
 }
 

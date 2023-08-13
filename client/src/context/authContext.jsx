@@ -18,8 +18,10 @@ export const AuthContextProvider = ({ children }) => {
 
   useEffect(() => {
     const user = localStorage.getItem("user");
+    const token = localStorage.getItem("token");
     if (user) {
       setUser(JSON.parse(user));
+      setToken(token);
     }
   }, []);
 
@@ -46,7 +48,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const loginUser = useCallback(async (e) => {
     e.preventDefault();
-    console.log(info);
     setIsLoading(true);
     const response = await postRequest(
       `${baseUrl}/auth/login`,

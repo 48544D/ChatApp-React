@@ -3,7 +3,8 @@ import Message from "../models/message.js";
 // create a new message
 export const createMessage = async (req, res) => {
   try {
-    const { chatId, senderId, text } = req.body;
+    const { chatId, text } = req.body;
+    const senderId = req.userId;
     const newMessage = new Message({
       chatId,
       senderId,

@@ -3,7 +3,6 @@ import { getRequest, baseUrl } from "../utils/services";
 
 export const useFetchRecipient = (chat) => {
   const [recipient, setRecipient] = useState(null);
-  const [error, setError] = useState(null);
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user"));
 
@@ -18,8 +17,7 @@ export const useFetchRecipient = (chat) => {
         );
 
         if (response.isError) {
-          console.log(response.error);
-          return setError(response.error);
+          return toast.error(response.error);
         }
 
         setRecipient(response);
@@ -28,5 +26,5 @@ export const useFetchRecipient = (chat) => {
     getUser();
   }, [recipientId]);
 
-  return { recipient, error };
+  return { recipient };
 };

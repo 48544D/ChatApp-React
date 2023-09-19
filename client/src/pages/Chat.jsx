@@ -8,7 +8,7 @@ import ChatBox from "../components/chat/chatBox";
 
 const Chat = () => {
   const { userChats, isLoading, updateChat } = useContext(ChatContext);
-  const user = JSON.parse(localStorage.getItem("user"));
+
   return (
     <>
       <CreateChat />
@@ -19,7 +19,7 @@ const Chat = () => {
               {isLoading && <p>Loading...</p>}
               {userChats.map((chat, index) => (
                 <div key={index} onClick={() => updateChat(chat)}>
-                  <UserCard chat={chat} user={user} />
+                  <UserCard chat={chat} />
                 </div>
               ))}
             </Stack>

@@ -64,12 +64,16 @@ export const AuthContextProvider = ({ children }) => {
       localStorage.setItem("token", response.token);
       setUser(response.user);
       setToken(response.token);
+      window.location.href = "/";
     }, 1500);
   });
 
   const logoutUser = useCallback(() => {
     localStorage.removeItem("user");
     setUser(null);
+    localStorage.removeItem("token");
+    setToken(null);
+    window.location.href = "/login";
   });
 
   return (

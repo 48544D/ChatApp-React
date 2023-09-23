@@ -1,4 +1,4 @@
-export const baseUrl = "http://localhost:3030";
+export const baseUrl = "https://react-chat-app-server-xytc.onrender.com";
 
 export const postRequest = async (url, body, token) => {
   const response = await fetch(url, {

@@ -2,20 +2,19 @@ import { useContext } from "react";
 import { Container, Nav, Navbar, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
+import DropdownMenu from "./DropDownMenu";
 
 const NavBar = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
+
   return (
-    <Navbar bg="dark" className="mb-4" style={{ height: "3.75rem" }}>
+    <Navbar bg="dark" className="mb-4">
       <Container>
         <h2>
           <Link to="/" className="link-light text-decoration-none">
             ChatApp
           </Link>
         </h2>
-        {user && (
-          <span className="text-warning">Logged in as {user?.username}</span>
-        )}
         <Nav>
           {!user && (
             <Stack direction="horizontal" gap={3}>
@@ -27,15 +26,7 @@ const NavBar = () => {
               </Link>
             </Stack>
           )}
-          {user && (
-            <Link
-              to="/"
-              className="link-light text-decoration-none"
-              onClick={logoutUser}
-            >
-              Logout
-            </Link>
-          )}
+          {user && <DropdownMenu />}
         </Nav>
       </Container>
     </Navbar>

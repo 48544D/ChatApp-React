@@ -76,6 +76,7 @@ const ChatBox = () => {
               sendTextMessage(textMessage, currentChat, setTextMessage);
             }
           }}
+          autoComplete="off"
         />
 
         <div className="emoji">

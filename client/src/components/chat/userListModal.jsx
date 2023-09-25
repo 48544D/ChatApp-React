@@ -12,7 +12,12 @@ const UserListModal = ({
 }) => {
   const currentUser = JSON.parse(localStorage.getItem("user"));
   return (
-    <Modal isOpen={isOpen} onRequestClose={onClose}>
+    <Modal
+      className="user-modal"
+      overlayClassName="user-modal-overlay"
+      isOpen={isOpen}
+      onRequestClose={onClose}
+    >
       <h2>Select a User</h2>
       <select onChange={(e) => setSelectedUser(e.target.value)}>
         <option value="">Select a user</option>
@@ -26,12 +31,10 @@ const UserListModal = ({
             </option>
           ))}
       </select>
-      <button className="btns" onClick={onClose}>
-        Cancel
-      </button>
-      <button className="btns" onClick={onSelectUser}>
-        Confirm
-      </button>
+      <div className="btns">
+        <button onClick={onSelectUser}>Confirm</button>
+        <button onClick={onClose}>Cancel</button>
+      </div>
     </Modal>
   );
 };

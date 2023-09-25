@@ -56,13 +56,13 @@ const UserCard = ({ chat }) => {
       </div>
       <div className="d-flex flex-column align-items-end">
         <div className="d-flex align-items-baseline gap-2">
-          {thisUserNotifications?.length > 0 && (
+          {/* {thisUserNotifications?.length > 0 && (
             <div className="date w-100">
               <p className="w-100">
                 {moment(thisUserNotifications[0].date).calendar()}
               </p>
             </div>
-          )}
+          )} */}
           {onlineUsers?.some((user) => user.userId === recipient?._id) && (
             <div className="user-online"></div>
           )}

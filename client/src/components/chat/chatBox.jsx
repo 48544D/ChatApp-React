@@ -33,26 +33,32 @@ const ChatBox = () => {
   }, [messages]);
 
   if (!currentChat)
-    return <p style={{ textAlign: "center", width: "100%" }}>Select a chat</p>;
+    return (
+      <div className="chat-box">
+        <h2>Select a chat</h2>
+      </div>
+    );
 
   if (isMessagesLoading)
-    return <p style={{ textAlign: "center", width: "100%" }}>Loading...</p>;
+    return (
+      <div className="chat-box">
+        <h3>Loading...</h3>
+      </div>
+    );
 
   return (
-    <Stack gap={4} className="chat-box">
+    <div className="chat-box">
       <div className="chat-header">
         <strong>{recipient?.username}</strong>
       </div>
-      <Stack gap={3} className="messages" ref={messagesContainerRef}>
+      <div className="messages" ref={messagesContainerRef}>
         {messages &&
           messages.map((message, index) => (
             <Stack
               key={index}
               gap={1}
               className={`${
-                message?.senderId === user?._id
-                  ? "message self align-self-end flex-grow-0"
-                  : "message align-self-start flex-grow-0"
+                message?.senderId === user?._id ? "message self" : "message"
               }`}
             >
               <span>{message.text}</span>
@@ -61,8 +67,8 @@ const ChatBox = () => {
               </span>
             </Stack>
           ))}
-      </Stack>
-      <Stack direction="horizontal" gap={3} className="chat-input ">
+      </div>
+      <Stack direction="horizontal" gap={3} className="chat-input">
         <input
           className="text-input"
           id="text-input"
@@ -128,7 +134,7 @@ const ChatBox = () => {
           </svg>
         </button>
       </Stack>
-    </Stack>
+    </div>
   );
 };
 

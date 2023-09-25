@@ -1,0 +1,26 @@
+.user-card {
+  position: relative;
+  height: 70px;
+
+  .text-content {
+    width: 170px;
+  }
+
+  .name {
+    font-weight: 700;
+  }
+
+  .text,
+  .date {
+    font-size: 14px;
+    color: rgb(180, 180, 180);
+  }
+
+  .user-online {
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    background: rgb(0, 219, 0);
+  }
+}

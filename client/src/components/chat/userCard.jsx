@@ -4,6 +4,7 @@ import avatar from "../../assets/avatar.svg";
 import { useContext, useEffect, useState } from "react";
 import { ChatContext } from "../../context/chatContext";
 import moment from "moment";
+import "../../css/userCard.scss";
 
 const UserCard = ({ chat }) => {
   const user = JSON.parse(localStorage.getItem("user"));

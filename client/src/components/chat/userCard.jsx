@@ -54,8 +54,8 @@ const UserCard = ({ chat }) => {
           <div className="text"></div>
         </div>
       </div>
-      <div className="d-flex flex-column align-items-end">
-        <div className="d-flex align-items-baseline gap-2">
+      <div className="d-flex flex-column align-items-end gap-2">
+        <div className="d-flex align-items-baseline">
           {/* {thisUserNotifications?.length > 0 && (
             <div className="date w-100">
               <p className="w-100">

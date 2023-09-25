@@ -22,14 +22,10 @@ const DropDownMenu = () => {
             Profile
           </Link>
         </div>
-        <div className="menu-item">
-          <Link
-            to="/"
-            className="link-dark text-decoration-none"
-            onClick={logoutUser}
-          >
+        <div className="menu-item" onClick={logoutUser}>
+          <p to="/" className="link-dark m-0">
             Logout
-          </Link>
+          </p>
         </div>
       </div>
     </div>

@@ -28,9 +28,9 @@ const CreateChat = () => {
 
   return (
     <>
-      <button className="create-chat" onClick={openModal}>
-        Create Chat
-      </button>
+      <div className="create-chat" onClick={openModal}>
+        <span>&#43;</span>
+      </div>
       <UserListModal
         isOpen={isModalOpen}
         users={users}

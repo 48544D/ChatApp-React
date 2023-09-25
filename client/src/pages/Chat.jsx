@@ -10,30 +10,28 @@ const Chat = () => {
   const { userChats, isLoading, updateChat } = useContext(ChatContext);
 
   return (
-    <>
-      <div className="chat-container">
-        <div className="contact-box">
-          <div className="contact-header">
-            <h2>Chats</h2>
-            <CreateChat />
-          </div>
-          <div className="line"></div>
-          {userChats.length < 1 ? null : (
-            <Stack direction="horizontal" gap={4} className="align-items-start">
-              <Stack className="userCard-container flex-grow-0 pe-3" gap={3}>
-                {isLoading && <p>Loading...</p>}
-                {userChats.map((chat, index) => (
-                  <div key={index} onClick={() => updateChat(chat)}>
-                    <UserCard chat={chat} />
-                  </div>
-                ))}
-              </Stack>
-            </Stack>
-          )}
+    <div className="chat-container">
+      <div className="contact-box">
+        <div className="contact-header">
+          <h2>Chats</h2>
+          <CreateChat />
         </div>
-        <ChatBox />
+        <div className="line"></div>
+        {userChats.length < 1 ? null : (
+          <Stack direction="horizontal" gap={4} className="align-items-start">
+            <Stack className="userCard-container flex-grow-0 pe-3" gap={3}>
+              {isLoading && <p>Loading...</p>}
+              {userChats.map((chat, index) => (
+                <div key={index} onClick={() => updateChat(chat)}>
+                  <UserCard chat={chat} />
+                </div>
+              ))}
+            </Stack>
+          </Stack>
+        )}
       </div>
-    </>
+      <ChatBox />
+    </div>
   );
 };
 

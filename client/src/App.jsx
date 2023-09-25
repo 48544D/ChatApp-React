@@ -8,13 +8,14 @@ import NavBar from "./components/NavBar.jsx";
 import { ChatContextProvider } from "./context/chatContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import "./App.scss";
 
 function App() {
   const user = JSON.parse(localStorage.getItem("user"));
   return (
     <ChatContextProvider>
       <NavBar />
-      <Container>
+      <div className="app-container">
         <Routes>
           <Route
             path="/"
@@ -42,7 +43,7 @@ function App() {
           pauseOnHover={false}
           theme="light"
         />
-      </Container>
+      </div>
     </ChatContextProvider>
   );
 }

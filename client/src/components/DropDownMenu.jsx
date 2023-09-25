@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import avatar from "../assets/avatar.svg";
-import "../css/dropDownMenu.css";
+import "../css/dropDownMenu.scss";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/authContext";
 

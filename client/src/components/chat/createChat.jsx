@@ -1,11 +1,11 @@
 import { useFetchUsers } from "../../hooks/useFetchUsers";
 import React, { useContext, useState } from "react";
 import UserListModal from "./userListModal.jsx";
-import "../../css/userModal.css";
 import { ChatContext } from "../../context/chatContext";
+import "../../css/createChat.scss";
 
 const CreateChat = () => {
-  const { users, error } = useFetchUsers();
+  const { users } = useFetchUsers();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedUser, setSelectedUser] = useState("");
   const { createChat } = useContext(ChatContext);
@@ -28,7 +28,9 @@ const CreateChat = () => {
 
   return (
     <>
-      <button onClick={openModal}>Create Chat</button>
+      <button className="create-chat" onClick={openModal}>
+        Create Chat
+      </button>
       <UserListModal
         isOpen={isModalOpen}
         users={users}

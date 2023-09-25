@@ -1,4 +1,5 @@
 import Modal from "react-modal";
+import "../../css/userModal.scss";
 
 Modal.setAppElement("#root");
 
@@ -25,8 +26,12 @@ const UserListModal = ({
             </option>
           ))}
       </select>
-      <button onClick={onClose}>Cancel</button>
-      <button onClick={onSelectUser}>Confirm</button>
+      <button className="btns" onClick={onClose}>
+        Cancel
+      </button>
+      <button className="btns" onClick={onSelectUser}>
+        Confirm
+      </button>
     </Modal>
   );
 };

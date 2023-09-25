@@ -5,7 +5,7 @@ import { Stack } from "react-bootstrap";
 import moment from "moment";
 import data from "@emoji-mart/data";
 import Picker from "@emoji-mart/react";
-import "../../css/chatBox.css";
+import "../../css/chatBox.scss";
 
 const ChatBox = () => {
   const user = JSON.parse(localStorage.getItem("user"));

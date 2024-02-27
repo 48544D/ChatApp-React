@@ -18,7 +18,11 @@ const Chat = () => {
         </div>
         <div className="line"></div>
         {userChats.length < 1 ? null : (
-          <Stack direction="horizontal" gap={4} className="align-items-start">
+          <Stack
+            direction="horizontal"
+            gap={4}
+            className="contacts align-items-start h-100 overflow-auto"
+          >
             <Stack className="userCard-container flex-grow-0 pe-3" gap={3}>
               {isLoading && <p>Loading...</p>}
               {userChats.map((chat, index) => (

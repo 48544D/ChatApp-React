@@ -3,7 +3,6 @@ import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Container } from "react-bootstrap";
 import NavBar from "./components/NavBar.jsx";
 import { ChatContextProvider } from "./context/chatContext";
 import { ToastContainer } from "react-toastify";

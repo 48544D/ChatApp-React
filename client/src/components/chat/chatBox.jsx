@@ -69,52 +69,57 @@ const ChatBox = () => {
           ))}
       </div>
       <Stack direction="horizontal" gap={3} className="chat-input">
-        <input
-          className="text-input"
-          id="text-input"
-          type="text"
-          autoFocus
-          placeholder="Type a message"
-          value={textMessage}
-          onChange={(e) => setTextMessage(e.target.value)}
-          onKeyPress={(e) => {
-            if (e.key === "Enter") {
-              sendTextMessage(textMessage, currentChat, setTextMessage);
-            }
-          }}
-          autoComplete="off"
-        />
-
-        <div className="emoji">
-          {pickerOpen && (
-            <div className="emoji-picker">
-              <Picker
-                data={data}
-                onEmojiSelect={(emoji) => emojiSelect(emoji)}
-                title="Pick your emoji…"
-                emoji="point_up"
-                style={{ position: "absolute", bottom: "100px", right: "20px" }}
-              />
-            </div>
-          )}
-          <button
-            className="emoji-btn"
-            onClick={() => setPickerOpen(!pickerOpen)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="#fff"
-              className="bi bi-emoji-smile"
-              viewBox="0 0 16 16"
+        <div className="chat-input-main">
+          <input
+            className="text-input"
+            id="text-input"
+            type="text"
+            autoFocus
+            placeholder="Type a message"
+            value={textMessage}
+            onChange={(e) => setTextMessage(e.target.value)}
+            onKeyPress={(e) => {
+              if (e.key === "Enter") {
+                sendTextMessage(textMessage, currentChat, setTextMessage);
+              }
+            }}
+            autoComplete="off"
+          />
+          <div className="emoji">
+            {pickerOpen && (
+              <div className="emoji-picker">
+                <Picker
+                  data={data}
+                  onEmojiSelect={(emoji) => emojiSelect(emoji)}
+                  title="Pick your emoji…"
+                  emoji="point_up"
+                  style={{
+                    position: "absolute",
+                    bottom: "100px",
+                    right: "20px",
+                  }}
+                />
+              </div>
+            )}
+            <button
+              className="emoji-btn"
+              onClick={() => setPickerOpen(!pickerOpen)}
             >
-              <path
-                fillRule="evenodd"
-                d="M8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 1a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm-2.5 5a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5Zm5 0a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5Zm-4.5 4a2.5 2.5 0 0 1 5 0h-5Z"
-              />
-            </svg>
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="#fff"
+                className="bi bi-emoji-smile"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13Zm0 1a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11Zm-2.5 5a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5Zm5 0a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5Zm-4.5 4a2.5 2.5 0 0 1 5 0h-5Z"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
 
         <button
@@ -125,8 +130,8 @@ const ChatBox = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
+            width="17"
+            height="17"
             fill="currentColor"
             viewBox="0 0 16 16 "
           >
